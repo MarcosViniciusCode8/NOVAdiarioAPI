@@ -17,19 +17,21 @@ export async function CriarNota(id,nota){
     return resultado.insertId
 }
 
-export async function EditarNota(nota){
+export async function EditarNota(id_nota,nota){
     let command = `
     UPDATE notas
     SET
     cor = ?,
     titulo = ?,
     texto = ?
+    WHERE ID_nota = ?
     `
 
     let [resultado] = await con.query(command, [
         nota.cor,
         nota.titulo,
-        nota.texto
+        nota.texto,
+        id_nota
     ])
     return resultado.affectedRows;
 }
