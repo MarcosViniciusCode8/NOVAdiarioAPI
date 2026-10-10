@@ -76,3 +76,21 @@ export async function ExcluirNotaValidation(id, id_usuario){
         let possivel = await DbNotas.AprovarMudanca(id, id_usuario)
     if(!possivel) throw new Error("Voce nao tem permissão pra essa nota");
 }
+
+export async function FavoritaNotaValidation(id, id_usuario){
+    if(!id) throw new Error("O id é necessário");
+
+    if(isNaN(id)) throw new Error("O id é necessáriamente Number");
+
+        let possivel = await DbNotas.AprovarMudanca(id, id_usuario)
+    if(!possivel) throw new Error("Voce nao tem permissão pra essa nota");
+}
+
+export async function DesfavoritaNotaValidation(id, id_usuario){
+    if(!id) throw new Error("O id é necessário");
+
+    if(isNaN(id)) throw new Error("O id é necessáriamente Number");
+
+        let possivel = await DbNotas.AprovarMudanca(id, id_usuario)
+    if(!possivel) throw new Error("Voce nao tem permissão pra essa nota");
+}

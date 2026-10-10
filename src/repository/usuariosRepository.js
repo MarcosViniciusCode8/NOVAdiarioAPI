@@ -3,8 +3,8 @@ import con from './conexao/connection.js';
 export async function CriarUsuarioRepository(conta) {
 
     let command = `
-        INSERT INTO usuarios(nome, username,email, senha, data_nascimento)
-        VALUES(?, ?, ?, ?, ?)
+INSERT INTO usuarios(nome, username, email, senha, data_nascimento, permissao)
+VALUES(?, ?, ?, ?, ?, FALSE);
     `;
 
     let [resposta] = await con.query(command, [

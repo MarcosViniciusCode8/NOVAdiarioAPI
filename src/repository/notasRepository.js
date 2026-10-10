@@ -2,8 +2,8 @@ import con from './conexao/connection.js';
 
 export async function CriarNota(id,nota){
     let command = `
-    INSERT INTO notas(ID_usuario, cor, titulo, texto)
-    VALUES(?,?,?,?)
+INSERT INTO notas(ID_usuario, cor, titulo, texto, favorita)
+VALUES(?, ?, ?, ?, false);
     `
 
     let cor = nota.cor.toLowerCase();
@@ -56,4 +56,41 @@ export async function AprovarMudanca(id,id_usuario){
 
     let [resultado] = await con.query(command, [id, id_usuario])
     return resultado[0];
+}
+
+export async function FavoritarNota(id){
+    let command = `
+    UPDATE notas
+    SET favorita = TRUE
+    WHERE ID_nota = ?
+    `
+
+    let [resultado] = await con.query(command, [id])
+    return resultado.affectedRows;
+}
+
+export async function DesfavoritarNota(id) {
+        let command = `
+    UPDATE notas
+    SET favorita = FALSE
+    WHERE ID_nota = ?
+    `
+
+    let [resultado] = await con.query(command, [id])
+    return resultado.affectedRows;
+}
+
+export async function VisualizarNotas(){
+    let command = `
+SELECT 
+favorita,
+titulo,
+texto,
+cor,
+data_criacao
+FROM notas
+ORDER BY favorita DESC;
+    `
+    let [resultado] = await con.query(command,[])
+    return resultado;
 }
