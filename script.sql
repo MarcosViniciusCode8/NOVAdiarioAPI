@@ -1,8 +1,8 @@
 CREATE DATABASE novadiario;
 USE novadiario;
 
-
 SELECT * FROM usuarios;
+
 CREATE TABLE usuarios(
 ID_usuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(200),
@@ -20,9 +20,22 @@ CREATE TABLE notas(
 ID_nota INT PRIMARY KEY AUTO_INCREMENT,
 ID_usuario INT,
 cor ENUM('azul', 'vermelho', 'amarelo', 'verde', 'laranja', 'roxo', 'rosa', 'marrom', 'preto', 'branco', 'cinza'),
-titulo VARCHAR(60),
+titulo VARCHAR(60),	
 texto TEXT,
 data_criacao DATE DEFAULT (CURRENT_DATE),
+favorita BOOLEAN,
+
+FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
+);
+
+CREATE TABLE notas_excluidas(
+ID_nota INT PRIMARY KEY AUTO_INCREMENT,
+ID_usuario INT,
+cor ENUM('azul', 'vermelho', 'amarelo', 'verde', 'laranja', 'roxo', 'rosa', 'marrom', 'preto', 'branco', 'cinza'),
+titulo VARCHAR(60),	
+texto TEXT,
+data_criacao DATE DEFAULT (CURRENT_DATE),
+favorita BOOLEAN,
 
 FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
 );
@@ -33,4 +46,15 @@ ID_usuario INT,
 preferencia VARCHAR(50),
 FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
 );
+
+SELECT 
+favorita,
+titulo,
+texto,
+cor,
+data_criacao
+FROM notas
+WHERE ID_usuario = 4
+ORDER BY favorita DESC
+
 
