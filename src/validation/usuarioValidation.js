@@ -73,3 +73,10 @@ export async function AlterarEmailValidation(email, id_usuario) {
         throw new Error('email já cadastrado');
     }
 }
+
+export function ImagemUsuarioErrors(file) {
+    if (!file) {
+        throw new Error("Imagem não enviada");
+
+    }
+}

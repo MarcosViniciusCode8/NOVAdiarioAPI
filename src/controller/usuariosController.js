@@ -5,7 +5,13 @@ import { LoginUsuario } from '../service/usuario/usuarioLoginService.js';
 import { AlterarUsernameService } from '../service/usuario/alterarUsernameService.js';
 import { AlterarSenhaService } from '../service/usuario/alterarSenhaService.js';
 import { AlterarEmailService } from '../service/usuario/alterarEmailService.js';
+import { ImagemUsuarioService } from "../service/usuario/alterarImagemService.js";
 import { validarToken } from "../utils/validarTokenUtils.js";
+
+
+import multer from 'multer';
+const uploadUsuario = multer({ dest: 'src/uploads/ImagemUsuarios' });
+
 
 endpoints.post('/usuario/cadastro', async (req, resp) => {
     try {
@@ -85,6 +91,19 @@ endpoints.put('/usuario/alterarEmail', validarToken, async (req, resp) => {
         resp.send({
             resposta: resposta
         })
+    }
+    catch (err) {
+        logError(err);
+        resp.status(400).send(erroJson(err));
+    }
+})
+
+endpoints.put('/usuario/alterarImagem', validarToken, uploadUsuario.single('imagem'), async (req, resp) => {
+    try {
+        let usuario = req.usuario.id_usuario;
+        const imagem = await ImagemUsuarioService(usuario, req.file);
+
+        resp.send({ imagem });
     }
     catch (err) {
         logError(err);

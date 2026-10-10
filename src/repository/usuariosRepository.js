@@ -1,7 +1,6 @@
 import con from './conexao/connection.js';
 
 
-
 export async function CriarUsuarioRepository(conta) {
 
     let command = `
@@ -78,4 +77,14 @@ export async function AlterarEmail(email, id_usuario){
 
     let [resultado] = await con.query(command, [email, id_usuario])
     return resultado.affectedRows;
+}
+
+export async function ImagemUsuario(idUsuario, imagem) {
+    const command = `
+        UPDATE usuarios
+        SET imagem = ?
+        WHERE ID_usuario = ?
+    `;
+
+    await con.query(command, [imagem, idUsuario]);
 }
