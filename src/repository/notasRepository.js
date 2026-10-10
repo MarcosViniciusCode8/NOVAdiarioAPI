@@ -36,6 +36,17 @@ export async function EditarNota(id_nota,nota){
     return resultado.affectedRows;
 }
 
+export async function ExcluirNota(id_nota){
+    let command = `
+    DELETE FROM notas
+    WHERE ID_nota = ?
+    `
+
+    let [resposta] = await con.query(command,[id_nota])
+    return resposta.affectedRows;
+}
+
+
 export async function AprovarMudanca(id,id_usuario){
     let command = `
     SELECT ID_nota, ID_usuario, titulo
