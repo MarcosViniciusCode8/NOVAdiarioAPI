@@ -28,18 +28,6 @@ favorita BOOLEAN,
 FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
 );
 
-CREATE TABLE notas_excluidas(
-ID_nota INT PRIMARY KEY AUTO_INCREMENT,
-ID_usuario INT,
-cor ENUM('azul', 'vermelho', 'amarelo', 'verde', 'laranja', 'roxo', 'rosa', 'marrom', 'preto', 'branco', 'cinza'),
-titulo VARCHAR(60),	
-texto TEXT,
-data_criacao DATE DEFAULT (CURRENT_DATE),
-favorita BOOLEAN,
-
-FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
-);
-
 CREATE TABLE textos_preferencias(
 ID_texto INT PRIMARY KEY AUTO_INCREMENT,
 ID_usuario INT,
