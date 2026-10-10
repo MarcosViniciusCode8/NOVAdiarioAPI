@@ -1,3 +1,5 @@
+import * as DbNotas from '../repository/notasRepository.js';
+
 export function CriarNotaValidation(nota) {
     if (!nota.cor) throw new Error("A cor é obrigatória");
 
@@ -28,7 +30,7 @@ export function CriarNotaValidation(nota) {
 
 }
 
-export function EditarNotaValidation(id_nota,nota){
+export async function EditarNotaValidation(id_nota,nota,id_usuario){
         if (!nota.cor) throw new Error("A cor é obrigatória");
 
 
@@ -60,6 +62,8 @@ export function EditarNotaValidation(id_nota,nota){
 
     if(isNaN(id_nota)) throw new Error("O id é necessáriamente Number");
     
+    let possivel = await DbNotas.AprovarMudanca(id_nota, id_usuario)
+    if(!possivel) throw new Error("Voce nao tem permissão pra essa nota");
     
 
 }

@@ -28,8 +28,9 @@ endpoints.put('/notas/editar/:id', validarToken, async (req, resp) => {
     try {
         let id_nota = req.params.id
         let nota = req.body;
+        let id_usuario = req.usuario.id_usuario;;
 
-        let resposta = await EditarNotaService(id_nota, nota)
+        let resposta = await EditarNotaService(id_nota, nota,id_usuario)
 
         resp.send({
             resposta: resposta

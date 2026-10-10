@@ -35,3 +35,14 @@ export async function EditarNota(id_nota,nota){
     ])
     return resultado.affectedRows;
 }
+
+export async function AprovarMudanca(id,id_usuario){
+    let command = `
+    SELECT ID_nota, ID_usuario, titulo
+    FROM notas
+    WHERE ID_nota = ? AND ID_usuario = ?
+    `
+
+    let [resultado] = await con.query(command, [id, id_usuario])
+    return resultado[0];
+}
