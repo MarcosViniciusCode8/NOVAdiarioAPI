@@ -37,5 +37,4 @@ endpoints.post('/usuario/login', async (req, resp) => {
     }
 });
 
-
 export default endpoints;

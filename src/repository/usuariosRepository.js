@@ -20,25 +20,26 @@ export async function CriarUsuarioRepository(conta) {
 
 export async function BuscarUsuarioEmail(email) {
 
-    let comando = `
+    let command = `
         SELECT ID_usuario, username, email, senha
         FROM usuarios
         WHERE email = ?
     `;
 
-    let [resultado] = await con.query(comando, [email]);
+    let [resultado] = await con.query(command, [email]);
 
     return resultado[0];
 }
 
 export async function BuscarUsuarioUsername(username) {
-    let comando = `
+    let command = `
         SELECT ID_usuario, username, email, senha
         FROM usuarios
         WHERE username = ?
     `;
 
-    let [resultado] = await con.query(comando, [username]);
+    let [resultado] = await con.query(command, [username]);
 
     return resultado[0];
 }
+

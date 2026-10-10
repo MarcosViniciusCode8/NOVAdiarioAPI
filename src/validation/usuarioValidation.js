@@ -28,8 +28,8 @@ export async function CriarUsuarioValidation(conta) {
 
     let emailFeito = await DBusuario.BuscarUsuarioEmail(conta.email);
 
-    if(emailFeito) throw new Error("email já cadastrado");
-    
+    if (emailFeito) throw new Error("email já cadastrado");
+
 }
 
 export function LoginUsuarioValidation(usuario, conta) {
