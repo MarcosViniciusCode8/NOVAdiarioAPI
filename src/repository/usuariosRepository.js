@@ -1,5 +1,7 @@
 import con from './conexao/connection.js';
 
+
+
 export async function CriarUsuarioRepository(conta) {
 
     let command = `
@@ -43,3 +45,37 @@ export async function BuscarUsuarioUsername(username) {
     return resultado[0];
 }
 
+
+
+export async function AlterarUsername(username, id_usuario){
+    let command = `
+    UPDATE usuarios
+    SET username = ?
+    WHERE ID_usuario = ?
+    `
+
+    let [resultado] = await con.query(command, [username, id_usuario])
+    return resultado.affectedRows;
+}
+
+export async function AlterarSenha(senha, id_usuario){
+    let command = `
+    UPDATE usuarios
+    SET senha = ?
+    WHERE ID_usuario = ?
+    `
+
+    let [resultado] = await con.query(command, [senha, id_usuario])
+    return resultado.affectedRows;
+}
+
+export async function AlterarEmail(email, id_usuario){
+    let command = `
+    UPDATE usuarios
+    SET email = ?
+    WHERE ID_usuario = ?
+    `
+
+    let [resultado] = await con.query(command, [email, id_usuario])
+    return resultado.affectedRows;
+}
