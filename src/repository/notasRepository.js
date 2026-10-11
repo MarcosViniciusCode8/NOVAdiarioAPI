@@ -89,7 +89,7 @@ texto,
 cor,
 data_criacao
 FROM notas
-ORDER BY favorita DESC, cor ASC;
+ORDER BY favorita DESC, cor ASC, data_criacao DESC;
     `
     let [resultado] = await con.query(command,[])
     return resultado;
