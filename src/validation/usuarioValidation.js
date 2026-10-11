@@ -86,3 +86,13 @@ export function ExcluirContaValidation(id_usuario) {
 
     if (isNaN(id_usuario)) throw new Error("O id é necessáriamente Number");
 }
+
+export async function UsuarioADMValidation(id_usuario) {
+    if (!id_usuario) throw new Error("O id é necessário");
+
+    if (isNaN(id_usuario)) throw new Error("O id é necessáriamente Number");
+
+    let permissao = await DBusuario.BuscarPermissaoUsuario(id_usuario);
+
+    if (!permissao) throw new Error("Usuário não tem permissão de Administrador");
+}
