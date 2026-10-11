@@ -80,3 +80,9 @@ export function ImagemUsuarioErrors(file) {
 
     }
 }
+
+export function ExcluirContaValidation(id_usuario) {
+    if (!id_usuario) throw new Error("O id é necessário");
+
+    if (isNaN(id_usuario)) throw new Error("O id é necessáriamente Number");
+}

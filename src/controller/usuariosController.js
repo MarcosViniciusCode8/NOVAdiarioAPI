@@ -6,7 +6,9 @@ import { AlterarUsernameService } from '../service/usuario/alterarUsernameServic
 import { AlterarSenhaService } from '../service/usuario/alterarSenhaService.js';
 import { AlterarEmailService } from '../service/usuario/alterarEmailService.js';
 import { ImagemUsuarioService } from "../service/usuario/alterarImagemService.js";
+import { excluircontaService } from '../service/usuario/ExcluirContaService.js';
 import { validarToken } from "../utils/validarTokenUtils.js";
+
 
 
 import multer from 'multer';
@@ -104,6 +106,22 @@ endpoints.put('/usuario/alterarImagem', validarToken, uploadUsuario.single('imag
         const imagem = await ImagemUsuarioService(usuario, req.file);
 
         resp.send({ imagem });
+    }
+    catch (err) {
+        logError(err);
+        resp.status(400).send(erroJson(err));
+    }
+})
+
+endpoints.delete('/usuario/excluirconta', validarToken, async (req, resp) => {
+    try {
+        let usuario = req.usuario.id_usuario;
+
+        let resposta = await excluircontaService(usuario)
+
+        resp.send({
+            resposta: resposta
+        })
     }
     catch (err) {
         logError(err);

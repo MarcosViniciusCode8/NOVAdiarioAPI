@@ -88,3 +88,13 @@ export async function ImagemUsuario(idUsuario, imagem) {
 
     await con.query(command, [imagem, idUsuario]);
 }
+
+export async function ExcluirUsuario(id_usuario) {
+    let command = `
+    DELETE FROM usuarios 
+    WHERE ID_usuario = ?
+    `
+
+    let [resultado] = await con.query(command,[id_usuario])
+    return resultado.affectedRows;
+}
