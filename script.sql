@@ -19,8 +19,7 @@ SELECT * FROM notas;
 CREATE TABLE notas(
 ID_nota INT PRIMARY KEY AUTO_INCREMENT,
 ID_usuario INT,
-cor ENUM('azul', 'vermelho', 'amarelo', 'verde', 'laranja', 'roxo', 'rosa', 'marrom', 'preto', 'branco', 'cinza'),
-titulo VARCHAR(60),	
+cor ENUM('azul', 'rosa', 'amarelo', 'verde', 'lilas', 'pessego', 'menta', 'coral', 'bege', 'cinza', 'azul-lavanda'),titulo VARCHAR(60),	
 texto TEXT,
 data_criacao DATE DEFAULT (CURRENT_DATE),
 favorita BOOLEAN,
