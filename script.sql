@@ -1,8 +1,6 @@
 CREATE DATABASE novadiario;
 USE novadiario;
 
-SELECT * FROM usuarios;
-
 CREATE TABLE usuarios(
 ID_usuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(200),
@@ -13,8 +11,6 @@ data_nascimento DATE,
 permissao BOOLEAN,
 imagem VARCHAR(800)
 );
-
-SELECT * FROM notas;
 
 CREATE TABLE notas(
 ID_nota INT PRIMARY KEY AUTO_INCREMENT,
@@ -34,6 +30,12 @@ preferencia VARCHAR(50),
 FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID_usuario)
 );
 
+-- Execute as consultas somente depois da criação das tabelas.
+-- Para criar uma nota, use um ID_usuario existente nesta lista.
+-- Na API, faça login com esse usuário para obter um token com o ID válido.
+SELECT ID_usuario, nome, username FROM usuarios;
+SELECT * FROM notas;
+
 SELECT 
 favorita,
 titulo,
@@ -42,6 +44,6 @@ cor,
 data_criacao
 FROM notas
 WHERE ID_usuario = 4
-ORDER BY favorita DESC
+ORDER BY favorita DESC;
 
 

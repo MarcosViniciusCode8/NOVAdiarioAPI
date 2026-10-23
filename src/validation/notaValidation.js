@@ -8,18 +8,18 @@ export function CriarNotaValidation(nota) {
 
     if (
         cor != 'azul' &&
-        cor != 'vermelho' &&
+        cor != 'rosa' &&
         cor != 'amarelo' &&
         cor != 'verde' &&
-        cor != 'laranja' &&
-        cor != 'roxo' &&
-        cor != 'rosa' &&
-        cor != 'marrom' &&
-        cor != 'preto' &&
-        cor != 'branco' &&
-        cor != 'cinza'
+        cor != 'lilas' &&
+        cor != 'pessego' &&
+        cor != 'menta' &&
+        cor != 'coral' &&
+        cor != 'bege' &&
+        cor != 'cinza' &&
+        cor != 'azul-lavanda'
     ) {
-        throw new Error('A cor deve ser azul, vermelho, amarelo, verde, laranja, roxo, rosa, marrom, preto, branco ou cinza');
+        throw new Error('A cor deve ser azul, rosa, amarelo, verde, lilas, pessego, menta, coral, bege, cinza ou azul-lavanda');
     }
 
     if(!nota.titulo) throw new Error("O titulo é obrigatório");
@@ -38,18 +38,18 @@ export async function EditarNotaValidation(id_nota,nota,id_usuario){
 
     if (
         cor != 'azul' &&
-        cor != 'vermelho' &&
+        cor != 'rosa' &&
         cor != 'amarelo' &&
         cor != 'verde' &&
-        cor != 'laranja' &&
-        cor != 'roxo' &&
-        cor != 'rosa' &&
-        cor != 'marrom' &&
-        cor != 'preto' &&
-        cor != 'branco' &&
-        cor != 'cinza'
+        cor != 'lilas' &&
+        cor != 'pessego' &&
+        cor != 'menta' &&
+        cor != 'coral' &&
+        cor != 'bege' &&
+        cor != 'cinza' &&
+        cor != 'azul-lavanda'
     ) {
-        throw new Error('A cor deve ser azul, vermelho, amarelo, verde, laranja, roxo, rosa, marrom, preto, branco ou cinza');
+        throw new Error('A cor deve ser azul, rosa, amarelo, verde, lilas, pessego, menta, coral, bege, cinza ou azul-lavanda');
     }
 
     if(!nota.titulo) throw new Error("O titulo é obrigatório");
